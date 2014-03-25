@@ -7,7 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <EClock.hpp>
 
 
 int main(void) {

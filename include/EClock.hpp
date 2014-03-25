@@ -3,6 +3,7 @@
 #include <windows.h>
 #include <gmp.h>
 #include <stdio.h>
+#include <string>
 
 std::string to_string(LONGLONG num)
 {
@@ -33,6 +34,7 @@ public:
         QueryPerformanceFrequency(&m_yun);
         QueryPerformanceCounter(&m_litmp);              //取得高精度运行计数器的数值
         m_begin = m_litmp.QuadPart;                     //开始计时
+        m_end = 0;
     }
     ~EClock()
     {

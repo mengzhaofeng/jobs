@@ -22,5 +22,7 @@ RS:
 
 RS:	cleanRS
 
+clean:	cleanRS
+
 cleanRS:
 	(cd ./RS; make clean)
