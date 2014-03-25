@@ -6,6 +6,9 @@
  */
 
 #include "SegmenTest.h"
+#include <Windows.h>
+#include "EClock.hpp"
+
 
 SegmenTest::SegmenTest() {
 	// TODO Auto-generated constructor stub

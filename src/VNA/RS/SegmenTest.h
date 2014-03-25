@@ -7,6 +7,9 @@
 
 #ifndef SEGMENTEST_H_
 #define SEGMENTEST_H_
+#include <visa.h>
+#include <vector>
+#include <stdlib.h>
 
 class SegmenTest {
 public:
