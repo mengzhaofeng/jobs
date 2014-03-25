@@ -1,15 +1,37 @@
-CXXFLAGS =	-O2 -g -Wall -fmessage-length=0
+export CXXFLAGS_GLOBAL =	-O2 -g -Wall -fmessage-length=0
 
-OBJS =		jobs.o
+export PLATFORM = win32
+
+export COMPILER = GCC
+
+BUILD = DLL
+
+ifeq ($(BUILD),ALL)
+	MAKE_CMD=make all BUILD_OPT=STATIC; make all BUILD_OPT=DLL
+else
+	ifeq ($(BUILD),DLL)
+		MAKE_CMD= make all BUILD_OPT=DLL
+	else
+		MAKE_CMD= make all BUILD_OPT=STATIC
+	endif
+endif
+
+BINDIR = ./bin/
+
+OBJSDIR = ./objs/
+
+OBJS =		
 
 LIBS =
 
-TARGET =	jobs.exe
+TARGET = jobs
+	
+.PHONY:		all	src 
 
-$(TARGET):	$(OBJS)
-	$(CXX) -o $(TARGET) $(OBJS) $(LIBS)
+all:	src
 
-all:	$(TARGET)
+src:	
+	(cd ./src; $(MAKE_CMD))
 
 clean:
-	rm -f $(OBJS) $(TARGET)
+	(cd ./src; make clean)
