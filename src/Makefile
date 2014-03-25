@@ -17,7 +17,7 @@ CLEAN_TARGET = clean cleanVNA
 
 all:	VNA
 
-Fenger:	
+VNA:	
 	(cd ./VNA; make all)
 
 
