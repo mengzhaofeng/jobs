@@ -18,7 +18,9 @@ OBJS =		$(MODULENAME).o SegmenTest.o
 
 DSTOBJS = $(foreach N,$(OBJS),$(OBJSDIR)$(N))
 
-LIBS =
+LIBS = gmp 
+
+LLIBS = $(foreach N, $(LIBS), -l$(N))
 
 INCDIR = 	$(PRODIR)/include $(THIRDPARTYDIR)/boost1_55/include
 
@@ -38,7 +40,7 @@ endif
 
 #com
 $(TARGET):	$(OBJS)
-	($(CXX) -o $(TARGET) $(OBJS) $(LIBS);mv $(TARGET) $(BINDIR))
+	($(CXX) -o $(TARGET) $(OBJS) -L$(LIBDIR) $(LLIBS);mv $(TARGET) $(BINDIR))
 	
 	
 $(filter %.o, $(OBJS)):%.o:%.cpp
@@ -49,7 +51,7 @@ $(filter %.o, $(OBJS)):%.o:%.cpp
 
 
 #target	
-.PHONY:all patch clean
+.PHONY:	all patch clean
 
 all:	$(TARGET) patch
 

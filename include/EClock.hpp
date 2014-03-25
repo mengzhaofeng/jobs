@@ -5,29 +5,28 @@
 #include <stdio.h>
 #include <string>
 
-std::string to_string(LONGLONG num)
-{
-    LONGLONG lg = num;
-    std::string str_;
-    while(lg)
-    {
-        char buf[2];
-        sprintf(buf, "%d", lg%10); lg /= 10;
-        str_ += buf;
-    }
-    std::string res_;
-    std::string::reverse_iterator iter = str_.rbegin();
-    while(iter != str_.rend())
-    {
-        res_ += *iter;
-        iter++;
-    }
-    return res_;
-}
-
-
+template <class T=int>
 class EClock
 {
+	std::string to_string(LONGLONG num)
+	{
+	    LONGLONG lg = num;
+	    std::string str_;
+	    while(lg)
+	    {
+	        char buf[2];
+	        sprintf(buf, "%I64d", lg%10); lg /= 10;
+	        str_ += buf;
+	    }
+	    std::string res_;
+	    std::string::reverse_iterator iter = str_.rbegin();
+	    while(iter != str_.rend())
+	    {
+	        res_ += *iter;
+	        iter++;
+	    }
+	    return res_;
+	}
 public:
     EClock()
     {
@@ -54,6 +53,7 @@ public:
         std::string begin = to_string(m_begin);
         std::string end = to_string(m_end);
         mpf_t mpf_begin, mpf_end, mpf_end_begin;
+
         mpf_init_set_str(mpf_begin, begin.c_str(), 10);
         mpf_init_set_str(mpf_end, end.c_str(), 10);
         mpf_init(mpf_end_begin);

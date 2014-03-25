@@ -7,7 +7,7 @@
 
 #include "SegmenTest.h"
 #include <Windows.h>
-#include "EClock.hpp"
+#include <stdio.h>
 
 
 SegmenTest::SegmenTest() {
@@ -17,5 +17,6 @@ SegmenTest::SegmenTest() {
 
 SegmenTest::~SegmenTest() {
 	// TODO Auto-generated destructor stub
+	printf("SegmenTest destructor\n");
 }
 
